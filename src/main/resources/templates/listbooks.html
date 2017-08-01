@@ -1,0 +1,55 @@
+<!-- - control come here from book controller /list
+        retrieving data from model attribute books object
+        
+        here it is listing all books from database using repository.findAll -->
+
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org "
+      xmlns:sec="www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Bootstrap 101 Template</title>
+
+    <th:block th:replace="base :: head"></th:block>
+</head>
+<body>
+<th:block th:replace="base :: nav"></th:block>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<div class="container">
+
+    <div class="starter-template">
+        <h5>List Books</h5>
+        
+        
+    </div>
+    <br /><br />
+    <table class="table table-striped">
+        <tr>
+            <th>Cover</th>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Actions</th>
+        </tr>
+        <tr th:each="row : ${books}">
+            <td><img th:src="@{${row.image}}" alt="Cover" style="width:100px;height:100px;"/> </td>
+            <td th:text="${row.title}"></td>
+            <td th:text="${row.author}"></td>
+            <td><a href="#" th:href="@{/books/edit/{bookid} (bookid = ${row.id})}">Update</a> -
+                <a href="#" th:href="@{/books/delete/{bookid} (bookid = ${row.id})}">Delete</a>
+            </td>
+        </tr>
+    </table>
+</div><!-- /.container -->
+
+<th:block th:replace="base :: footlinks"></th:block>
+</body>
+</html>
